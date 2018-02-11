@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"> 
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header>
+        <p>IMDB </p>
+    </header>
+    <div class="body-content">
+        @RenderBody()
+        
+        <footer>
+            <p>&copy; @DateTime.Now.Year - IMDB</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<IMDB.Models.Movie>
+@{
+    ViewBag.Title = "IMDB";
+}
+<div class="movie-list">
+    @foreach (var movie in Model)
+    {
+        <div class="movie">
+
+            <img src="@(System.Configuration.ConfigurationManager.AppSettings["ImgPath"] + movie.Poster)" alt="@movie.Name" />
+            <div class="details">
+                <a href="~/home/EditMovie/@movie.ID">Edit</a>
+                <h3>@movie.Name</h3>
+                <div>
+                    <h4>Produced by:</h4>
+                    <p>@movie.Producer.Name</p>
+                </div>
+                <div>
+                    <h4>Casts:</h4>
+                    <p>@string.Join(", ", movie.ActorsMovies.Select(x => x.Actor.Name).ToList())</p>
+                </div>
+                <p>
+                    @movie.Plot
+                </p>
+            </div>
+        </div>
+    }
+
+</div>
+<a href="~/home/newmovie">
+    <div class="add-btn"><span>+</span></div>
+</a>
